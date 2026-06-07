@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #fdfdfc;
+  --color-surface: #f6f6f4;
+  --color-card: #ffffff;
+  --color-edge: #e8e8e4;
+  --color-edge-strong: #d4d4cf;
+  --color-ink: #1a1a18;
+  --color-ink-dim: #56564f;
+  --color-ink-faint: #94948c;
+  --color-accent: #3d5a3d;
+  --color-accent-soft: #5c7a5c;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(61, 90, 61, 0.18);
+}
+
+/* prose styling for case study pages */
+.prose-light h2 {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 2.8rem 0 0.9rem;
+  letter-spacing: -0.01em;
+}
+.prose-light h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 1.7rem 0 0.6rem;
+}
+.prose-light p {
+  color: var(--color-ink-dim);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.prose-light strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.prose-light em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05em;
+}
+.prose-light ul {
+  margin: 0.6rem 0 1.3rem;
+  padding: 0;
+  list-style: none;
+}
+.prose-light ul li {
+  position: relative;
+  padding: 0.32rem 0 0.32rem 1.4rem;
+  color: var(--color-ink-dim);
+  line-height: 1.75;
+  font-size: 0.97rem;
+}
+.prose-light ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.95rem;
+  width: 0.55rem;
+  height: 1px;
+  background: var(--color-ink);
+}
+.prose-light blockquote {
+  border-left: 2px solid var(--color-ink);
+  padding: 0.4rem 0 0.4rem 1.4rem;
+  margin: 1.6rem 0;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+.prose-light blockquote p {
+  color: var(--color-ink);
+  font-size: inherit;
+  margin: 0;
+}
+.prose-light blockquote strong {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.prose-light .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-edge);
+  border-radius: 10px;
+  margin: 1.3rem 0 1.9rem;
+  background: var(--color-card);
+}
+.prose-light table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.prose-light th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-ink);
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--color-edge-strong);
+  background: var(--color-surface);
+  white-space: nowrap;
+}
+.prose-light td {
+  padding: 0.7rem 1rem;
+  color: var(--color-ink-dim);
+  border-bottom: 1px solid var(--color-edge);
+  vertical-align: top;
+}
+.prose-light tr:last-child td {
+  border-bottom: none;
+}
+
+/* phase labels inside prose */
+.prose-light .phase {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.7rem;
+  border: 1px solid var(--color-edge-strong);
+  border-radius: 999px;
+  margin: 0.3rem 0;
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+.prose-light .phase-1,
+.prose-light .phase-2,
+.prose-light .phase-3 {
+  color: var(--color-ink);
+}
