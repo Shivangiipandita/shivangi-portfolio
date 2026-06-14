@@ -389,17 +389,11 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-edge">
       <div className={`${WRAP} pt-14 pb-10`}>
         <div className="flex flex-col justify-between gap-3 text-xs text-ink-faint sm:flex-row">
-          <span>© 2026 Shivangi Pandita — Product Manager</span>
+          <span>© 2026 — Product Manager</span>
           <span className="flex items-center gap-1.5">
             Designed &amp; built with intention
             <span className="text-accent">✦</span>
           </span>
-        </div>
-        <div
-          aria-hidden
-          className="pointer-events-none mt-6 select-none whitespace-nowrap font-display text-[16vw] font-light leading-[0.8] tracking-tight text-ink/[0.05]"
-        >
-          Shivangi Pandita
         </div>
       </div>
     </footer>

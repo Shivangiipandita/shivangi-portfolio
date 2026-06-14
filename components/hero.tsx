@@ -55,14 +55,6 @@ export function Hero() {
             "radial-gradient(circle, rgba(222,77,38,0.16), transparent 65%)",
         }}
       />
-      {/* oversized decorative glyph */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-6 top-24 select-none font-display text-[22rem] leading-none text-accent/[0.06] sm:text-[30rem]"
-      >
-        *
-      </span>
-
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-36 sm:px-8 sm:pt-44">
         <motion.div
           initial={{ opacity: 0 }}
