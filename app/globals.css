@@ -1,134 +1,258 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #fdfdfc;
-  --color-surface: #f6f6f4;
-  --color-card: #ffffff;
-  --color-edge: #e8e8e4;
-  --color-edge-strong: #d4d4cf;
-  --color-ink: #1a1a18;
-  --color-ink-dim: #56564f;
-  --color-ink-faint: #94948c;
-  --color-accent: #3d5a3d;
-  --color-accent-soft: #5c7a5c;
+  /* ─── warm editorial paper palette ─── */
+  --color-paper: #f4f1ea;
+  --color-paper-deep: #ece6da;
+  --color-surface: #ece6da;
+  --color-card: #fbf9f4;
+  --color-edge: #ddd6c8;
+  --color-edge-strong: #c8c0ae;
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --color-ink: #1c1714;
+  --color-ink-dim: #5a5147;
+  --color-ink-faint: #948a7c;
+
+  /* ─── single confident chroma: persimmon ─── */
+  --color-accent: #de4d26;
+  --color-accent-deep: #be3d1c;
+  --color-accent-soft: #f0a589;
+  --color-accent-wash: #f6e7df;
+
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv05";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* numerals line up in stat blocks + tables */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
 }
 
-body {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+/* ─── paper grain overlay (atmosphere) ─── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
 }
 
-::selection {
-  background: rgba(61, 90, 61, 0.18);
+/* ─── horizontal ticker / marquee ─── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
 }
 
-/* prose styling for case study pages */
+/* ─── hand-drawn accent underline ─── */
+.ink-underline {
+  background-image: linear-gradient(
+    var(--color-accent),
+    var(--color-accent)
+  );
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 0.12em;
+  padding-bottom: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   Case-study prose  (.prose-light)
+   trusted static HTML authored in lib/case-studies
+─────────────────────────────────────────────── */
+.prose-light {
+  --measure: 68ch;
+}
 .prose-light h2 {
-  font-family: var(--font-serif);
-  font-size: 1.7rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 1.1rem + 2vw, 2.1rem);
   font-weight: 400;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
   color: var(--color-ink);
-  margin: 2.8rem 0 0.9rem;
-  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin: 3.2rem 0 1rem;
+}
+.prose-light h2:first-child {
+  margin-top: 0;
 }
 .prose-light h3 {
-  font-size: 1.02rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--color-ink);
-  margin: 1.7rem 0 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-deep);
+  margin: 2rem 0 0.7rem;
 }
 .prose-light p {
   color: var(--color-ink-dim);
-  line-height: 1.85;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.05rem;
+  font-size: 1.02rem;
+  max-width: var(--measure);
 }
 .prose-light strong {
   color: var(--color-ink);
   font-weight: 600;
 }
 .prose-light em {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.05em;
+  font-size: 1.06em;
+  color: var(--color-ink);
+}
+.prose-light a {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 .prose-light ul {
-  margin: 0.6rem 0 1.3rem;
+  margin: 0.6rem 0 1.5rem;
   padding: 0;
   list-style: none;
+  max-width: var(--measure);
 }
 .prose-light ul li {
   position: relative;
-  padding: 0.32rem 0 0.32rem 1.4rem;
+  padding: 0.36rem 0 0.36rem 1.5rem;
   color: var(--color-ink-dim);
-  line-height: 1.75;
-  font-size: 0.97rem;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 .prose-light ul li::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0.95rem;
-  width: 0.55rem;
-  height: 1px;
-  background: var(--color-ink);
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--color-accent);
 }
 .prose-light blockquote {
-  border-left: 2px solid var(--color-ink);
-  padding: 0.4rem 0 0.4rem 1.4rem;
-  margin: 1.6rem 0;
+  position: relative;
+  border: none;
+  background: var(--color-card);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 14px 14px 0;
+  padding: 1.4rem 1.6rem;
+  margin: 2rem 0;
   color: var(--color-ink);
-  font-family: var(--font-serif);
-  font-size: 1.12rem;
-  line-height: 1.7;
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  box-shadow: 0 1px 0 var(--color-edge);
 }
 .prose-light blockquote p {
   color: var(--color-ink);
   font-size: inherit;
+  max-width: none;
   margin: 0;
 }
 .prose-light blockquote strong {
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-deep);
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
+
+/* tables */
 .prose-light .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--color-edge);
-  border-radius: 10px;
-  margin: 1.3rem 0 1.9rem;
+  border-radius: 14px;
+  margin: 1.5rem 0 2rem;
   background: var(--color-card);
 }
 .prose-light table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
 }
 .prose-light th {
   text-align: left;
   font-weight: 600;
   color: var(--color-ink);
-  padding: 0.7rem 1rem;
+  padding: 0.8rem 1.1rem;
   border-bottom: 1px solid var(--color-edge-strong);
   background: var(--color-surface);
   white-space: nowrap;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .prose-light td {
-  padding: 0.7rem 1rem;
+  padding: 0.8rem 1.1rem;
   color: var(--color-ink-dim);
   border-bottom: 1px solid var(--color-edge);
   vertical-align: top;
@@ -136,23 +260,22 @@ body {
 .prose-light tr:last-child td {
   border-bottom: none;
 }
+.prose-light td strong {
+  color: var(--color-ink);
+}
 
-/* phase labels inside prose */
+/* phase chips */
 .prose-light .phase {
   display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.22rem 0.7rem;
-  border: 1px solid var(--color-edge-strong);
+  padding: 0.3rem 0.8rem;
   border-radius: 999px;
-  margin: 0.3rem 0;
-  color: var(--color-ink);
-  background: var(--color-surface);
-}
-.prose-light .phase-1,
-.prose-light .phase-2,
-.prose-light .phase-3 {
-  color: var(--color-ink);
+  margin: 0.4rem 0;
+  color: var(--color-accent-deep);
+  background: var(--color-accent-wash);
+  border: 1px solid var(--color-accent-soft);
 }

@@ -1,27 +1,16 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Reveal, Stagger, StaggerItem } from "./motion";
+import { ArrowUpRight, ArrowRight, Diamond } from "lucide-react";
+import { Reveal, Stagger, StaggerItem, Magnetic } from "./motion";
 import { caseStudies } from "@/lib/case-studies";
 
-function SectionHeading({
-  eyebrow,
-  title,
-  desc,
-}: {
-  eyebrow: string;
-  title: string;
-  desc?: string;
-}) {
+const WRAP = "mx-auto max-w-6xl px-6 sm:px-8";
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <Reveal className="mb-12">
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-ink-faint">
-        {eyebrow}
-      </p>
-      <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
-        {title}
-      </h2>
-      {desc && <p className="mt-4 max-w-lg text-ink-dim">{desc}</p>}
-    </Reveal>
+    <p className="flex items-center gap-3 text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-ink-faint">
+      <span className="h-px w-8 bg-accent" />
+      {children}
+    </p>
   );
 }
 
@@ -29,39 +18,46 @@ function SectionHeading({
 
 export function About() {
   return (
-    <section id="about" className="px-6 py-24">
-      <div className="mx-auto max-w-3xl">
-        <SectionHeading eyebrow="About" title="From business analysis to product" />
+    <section id="about" className={`${WRAP} scroll-mt-24 py-28 sm:py-36`}>
+      <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
         <Reveal>
-          <div className="space-y-5 leading-relaxed text-ink-dim">
-            <p>
+          <Eyebrow>About</Eyebrow>
+          <h2 className="mt-5 font-display text-3xl font-light leading-[1.05] tracking-tight text-ink sm:text-4xl">
+            From business analysis to product.
+          </h2>
+          <p className="mt-6 font-display text-xl italic leading-snug text-accent">
+            “I start with the person, not the technology.”
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="space-y-5 text-[1.05rem] leading-relaxed text-ink-dim">
+            <p className="first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-6xl first-letter:font-light first-letter:leading-[0.75] first-letter:text-ink">
               My career started in business analysis — understanding complex
               government workflows, sitting with stakeholders, and turning
               messy real-world problems into clean digital solutions on
-              Salesforce. Somewhere along the way, I realized what truly
-              excites me isn&apos;t just gathering requirements — it&apos;s
-              deciding{" "}
+              Salesforce. Somewhere along the way I realized what truly excites
+              me isn&apos;t just gathering requirements — it&apos;s deciding{" "}
               <strong className="font-semibold text-ink">
                 what to build, for whom, and why.
               </strong>
             </p>
             <p>
-              Today I&apos;m putting that thinking into practice as founder
-              of{" "}
+              Today I&apos;m putting that thinking into practice as founder of{" "}
               <strong className="font-semibold text-ink">Focus Tribe</strong>,
               a habit-tracking platform where users stay accountable through
               collaborative groups. I lead every product decision — who our
-              users are, what problems we&apos;re solving, which features
-              matter most, and what can wait.
+              users are, what problems we&apos;re solving, which features matter
+              most, and what can wait.
             </p>
             <p>
               My superpower is thinking from the{" "}
               <strong className="font-semibold text-ink">
                 user&apos;s perspective first
               </strong>
-              . Whether it&apos;s a county employee stuck in a paper-heavy
-              loan process or a student building study habits — I start with
-              the person, not the technology.
+              . Whether it&apos;s a county employee stuck in a paper-heavy loan
+              process or a student building study habits — I begin with the
+              person and work backwards to the product.
             </p>
           </div>
         </Reveal>
@@ -74,46 +70,74 @@ export function About() {
 
 export function Work() {
   return (
-    <section id="work" className="border-t border-edge bg-surface px-6 py-24">
-      <div className="mx-auto max-w-3xl">
-        <SectionHeading
-          eyebrow="Case Studies"
-          title="Four problems, worked end to end"
-          desc="Each one follows the same discipline — understand users, prioritize problems, design solutions, measure impact."
-        />
-        <Stagger className="divide-y divide-edge border-y border-edge">
+    <section
+      id="work"
+      className="scroll-mt-20 border-y border-edge bg-surface py-28 sm:py-36"
+    >
+      <div className={WRAP}>
+        <Reveal className="mb-14 flex items-end justify-between gap-6">
+          <div>
+            <Eyebrow>Selected Work</Eyebrow>
+            <h2 className="mt-5 max-w-2xl font-display text-4xl font-light leading-[1.02] tracking-tight text-ink sm:text-5xl">
+              Four problems, worked end to end.
+            </h2>
+            <p className="mt-5 max-w-lg text-ink-dim">
+              Each follows the same discipline — understand the user,
+              prioritise the problem, design the solution, measure the impact.
+            </p>
+          </div>
+          <span className="hidden shrink-0 font-display text-2xl italic text-ink-faint sm:block">
+            ({caseStudies.length.toString().padStart(2, "0")})
+          </span>
+        </Reveal>
+
+        <Stagger className="border-t border-edge-strong">
           {caseStudies.map((cs, i) => (
             <StaggerItem key={cs.slug}>
               <Link
                 href={`/work/${cs.slug}`}
-                className="group flex flex-col gap-4 py-9 transition-colors sm:flex-row sm:items-baseline sm:gap-8"
+                className="group relative grid grid-cols-1 gap-5 border-b border-edge py-9 transition-colors duration-300 hover:bg-card sm:grid-cols-[3.5rem_1fr_auto] sm:items-start sm:gap-8 sm:px-4 sm:py-10"
               >
-                <span className="shrink-0 font-serif text-sm italic text-ink-faint sm:w-10">
-                  0{i + 1}
+                {/* accent bar */}
+                <span className="absolute left-0 top-0 hidden h-full w-[3px] origin-top scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100 sm:block" />
+
+                <span className="font-display text-2xl italic text-ink-faint transition-colors group-hover:text-accent">
+                  {(i + 1).toString().padStart(2, "0")}
                 </span>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-serif text-2xl tracking-tight text-ink decoration-edge-strong underline-offset-4 group-hover:underline">
+
+                <div>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <h3 className="font-display text-2xl font-normal tracking-tight text-ink transition-transform duration-300 group-hover:translate-x-1 sm:text-[1.75rem]">
                       {cs.title}
                     </h3>
-                    <ArrowRight
-                      size={16}
-                      className="text-ink-faint transition-transform group-hover:translate-x-1"
-                    />
+                    <span className="rounded-full border border-accent-soft bg-accent-wash px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-accent-deep">
+                      {cs.tag}
+                    </span>
                   </div>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-ink-faint">
-                    {cs.tag}
-                  </p>
-                  <p className="mt-3 max-w-xl text-[0.95rem] leading-relaxed text-ink-dim">
+                  <p className="mt-3 max-w-2xl text-[0.97rem] leading-relaxed text-ink-dim">
                     {cs.blurb}
                   </p>
-                  <p className="mt-4 text-sm text-ink">
-                    {cs.metrics
-                      .slice(0, 3)
-                      .map((m) => `${m.value} ${m.label.toLowerCase()}`)
-                      .join("  ·  ")}
-                  </p>
+                  <div className="mt-5 flex flex-wrap gap-x-7 gap-y-2">
+                    {cs.metrics.slice(0, 3).map((m) => (
+                      <span
+                        key={m.label}
+                        className="text-sm text-ink-faint"
+                      >
+                        <span className="font-display text-base font-medium text-accent-deep tnum">
+                          {m.value}
+                        </span>{" "}
+                        {m.label.toLowerCase()}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+
+                <span className="hidden items-center gap-2 self-center text-sm font-medium text-ink-faint transition-colors group-hover:text-ink sm:flex">
+                  <ArrowRight
+                    size={20}
+                    className="transition-transform duration-300 group-hover:translate-x-1.5"
+                  />
+                </span>
               </Link>
             </StaggerItem>
           ))}
@@ -151,37 +175,56 @@ const certs = [
 
 export function Skills() {
   return (
-    <section id="skills" className="px-6 py-24">
-      <div className="mx-auto max-w-3xl">
-        <SectionHeading eyebrow="Expertise" title="What I work with" />
-        <div className="space-y-10">
-          {skillGroups.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.08}>
-              <div className="grid gap-2 sm:grid-cols-[140px_1fr] sm:gap-8">
-                <h3 className="text-xs font-semibold uppercase tracking-[0.15em] text-ink-faint">
-                  {g.title}
-                </h3>
-                <p className="text-[0.95rem] leading-loose text-ink-dim">
-                  {g.items}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-          <Reveal delay={0.16}>
-            <div className="grid gap-2 sm:grid-cols-[140px_1fr] sm:gap-8">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.15em] text-ink-faint">
-                Certifications
+    <section id="skills" className={`${WRAP} scroll-mt-24 py-28 sm:py-36`}>
+      <Reveal>
+        <Eyebrow>Expertise</Eyebrow>
+        <h2 className="mt-5 font-display text-4xl font-light tracking-tight text-ink sm:text-5xl">
+          What I work with.
+        </h2>
+      </Reveal>
+
+      <div className="mt-14 space-y-12">
+        {skillGroups.map((g, gi) => (
+          <Reveal key={g.title} delay={gi * 0.08}>
+            <div className="grid gap-5 sm:grid-cols-[160px_1fr] sm:gap-10">
+              <h3 className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-ink-faint">
+                {g.title}
               </h3>
-              <ul className="space-y-1.5">
-                {certs.map((c) => (
-                  <li key={c} className="text-[0.95rem] leading-relaxed text-ink-dim">
-                    {c}
-                  </li>
+              <div className="flex flex-wrap gap-2.5">
+                {g.items.split(" · ").map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-edge-strong bg-card px-4 py-2 text-sm text-ink-dim transition-colors hover:border-accent hover:text-ink"
+                  >
+                    {item}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           </Reveal>
-        </div>
+        ))}
+
+        <Reveal delay={0.16}>
+          <div className="grid gap-5 border-t border-edge pt-12 sm:grid-cols-[160px_1fr] sm:gap-10">
+            <h3 className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-ink-faint">
+              Certifications
+            </h3>
+            <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+              {certs.map((c) => (
+                <li
+                  key={c}
+                  className="flex items-start gap-3 text-[0.95rem] leading-snug text-ink-dim"
+                >
+                  <Diamond
+                    size={11}
+                    className="mt-1 shrink-0 fill-accent text-accent"
+                  />
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -213,24 +256,42 @@ const roles = [
   },
 ];
 
+function Node() {
+  return (
+    <span className="absolute -left-[6.5px] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-paper" />
+  );
+}
+
 export function Experience() {
   return (
-    <section id="experience" className="border-t border-edge bg-surface px-6 py-24">
-      <div className="mx-auto max-w-3xl">
-        <SectionHeading eyebrow="Experience" title="Where I've worked" />
-        <div className="space-y-12">
+    <section
+      id="experience"
+      className="scroll-mt-20 border-y border-edge bg-surface py-28 sm:py-36"
+    >
+      <div className={WRAP}>
+        <Reveal>
+          <Eyebrow>Experience</Eyebrow>
+          <h2 className="mt-5 font-display text-4xl font-light tracking-tight text-ink sm:text-5xl">
+            Where I&apos;ve worked.
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 space-y-12">
           {roles.map((r, i) => (
             <Reveal key={r.title} delay={i * 0.08}>
-              <div className="grid gap-3 sm:grid-cols-[180px_1fr] sm:gap-8">
-                <p className="text-sm text-ink-faint">{r.period}</p>
-                <div>
-                  <h3 className="font-semibold text-ink">{r.title}</h3>
+              <div className="grid gap-3 sm:grid-cols-[200px_1fr] sm:gap-10">
+                <p className="pt-1 text-sm font-medium uppercase tracking-[0.08em] text-ink-faint">
+                  {r.period}
+                </p>
+                <div className="relative border-l border-edge-strong pl-7">
+                  <Node />
+                  <h3 className="font-display text-xl text-ink">{r.title}</h3>
                   {r.href ? (
                     <a
                       href={r.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm text-ink-dim underline decoration-edge-strong underline-offset-4 hover:decoration-ink"
+                      className="text-sm font-medium text-accent-deep underline decoration-accent-soft underline-offset-4 hover:decoration-accent"
                     >
                       {r.org}
                     </a>
@@ -241,7 +302,7 @@ export function Experience() {
                     {r.bullets.map((b) => (
                       <li
                         key={b}
-                        className="text-[0.95rem] leading-relaxed text-ink-dim"
+                        className="relative pl-5 text-[0.97rem] leading-relaxed text-ink-dim before:absolute before:left-0 before:top-[0.7em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-accent-soft"
                       >
                         {b}
                       </li>
@@ -251,11 +312,15 @@ export function Experience() {
               </div>
             </Reveal>
           ))}
+
           <Reveal delay={0.16}>
-            <div className="grid gap-3 border-t border-edge pt-10 sm:grid-cols-[180px_1fr] sm:gap-8">
-              <p className="text-sm text-ink-faint">2019 — 2023</p>
-              <div>
-                <h3 className="font-semibold text-ink">
+            <div className="grid gap-3 sm:grid-cols-[200px_1fr] sm:gap-10">
+              <p className="pt-1 text-sm font-medium uppercase tracking-[0.08em] text-ink-faint">
+                2019 — 2023
+              </p>
+              <div className="relative border-l border-edge-strong pl-7">
+                <Node />
+                <h3 className="font-display text-xl text-ink">
                   B.Tech, Computer Engineering
                 </h3>
                 <p className="text-sm text-ink-dim">
@@ -274,25 +339,31 @@ export function Experience() {
 
 export function Contact() {
   return (
-    <section id="contact" className="px-6 py-28">
-      <Reveal className="mx-auto max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-ink-faint">
-          Contact
-        </p>
-        <h2 className="max-w-xl font-serif text-4xl leading-[1.15] tracking-tight text-ink sm:text-5xl">
-          Looking for a PM who starts with the user? <em>Let&apos;s talk.</em>
+    <section id="contact" className={`${WRAP} scroll-mt-24 py-32 sm:py-40`}>
+      <Reveal>
+        <Eyebrow>Contact</Eyebrow>
+        <h2 className="mt-6 max-w-3xl font-display text-[clamp(2.4rem,1.4rem+4vw,4.5rem)] font-light leading-[1.02] tracking-tight text-ink">
+          Looking for a PM who starts with the user?{" "}
+          <em className="italic text-accent">Let&apos;s talk.</em>
         </h2>
-        <p className="mt-6 max-w-md text-ink-dim">
-          I&apos;m actively looking for Product Manager roles — Delhi NCR,
-          Mumbai, Pune, Bangalore, Hyderabad, or remote.
+        <p className="mt-7 max-w-md text-lg text-ink-dim">
+          Actively looking for Product Manager roles — Delhi NCR, Mumbai, Pune,
+          Bangalore, Hyderabad, or remote.
         </p>
-        <div className="mt-10 flex flex-wrap items-center gap-6">
-          <a
-            href="mailto:panditashivangi2000@gmail.com"
-            className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-85"
-          >
-            panditashivangi2000@gmail.com
-          </a>
+
+        <div className="mt-11 flex flex-wrap items-center gap-x-7 gap-y-4">
+          <Magnetic>
+            <a
+              href="mailto:panditashivangi2000@gmail.com"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent-deep px-7 py-3.5 text-sm font-medium text-white transition-transform hover:scale-[1.02]"
+            >
+              panditashivangi2000@gmail.com
+              <ArrowUpRight
+                size={15}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
+          </Magnetic>
           <a
             href="https://linkedin.com/in/shivangipandita"
             target="_blank"
@@ -301,7 +372,7 @@ export function Contact() {
           >
             LinkedIn
             <ArrowUpRight
-              size={14}
+              size={15}
               className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             />
           </a>
@@ -315,10 +386,21 @@ export function Contact() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-edge px-6 py-8">
-      <div className="mx-auto flex max-w-3xl flex-col justify-between gap-2 text-xs text-ink-faint sm:flex-row">
-        <span>© 2026 Shivangi Pandita</span>
-        <span>Designed with intention</span>
+    <footer className="relative overflow-hidden border-t border-edge">
+      <div className={`${WRAP} pt-14 pb-10`}>
+        <div className="flex flex-col justify-between gap-3 text-xs text-ink-faint sm:flex-row">
+          <span>© 2026 Shivangi Pandita — Product Manager</span>
+          <span className="flex items-center gap-1.5">
+            Designed &amp; built with intention
+            <span className="text-accent">✦</span>
+          </span>
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none mt-6 select-none whitespace-nowrap font-display text-[16vw] font-light leading-[0.8] tracking-tight text-ink/[0.05]"
+        >
+          Shivangi Pandita
+        </div>
       </div>
     </footer>
   );
