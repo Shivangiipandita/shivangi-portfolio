@@ -130,7 +130,7 @@ export function Hero() {
             />
           </a>
           <a
-            href="mailto:panditashivangi2000@gmail.com"
+            href="mailto:shivangiihere@gmail.com"
             className="text-sm font-medium text-ink-dim transition-colors hover:text-ink"
           >
             Email

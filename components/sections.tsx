@@ -354,10 +354,10 @@ export function Contact() {
         <div className="mt-11 flex flex-wrap items-center gap-x-7 gap-y-4">
           <Magnetic>
             <a
-              href="mailto:panditashivangi2000@gmail.com"
+              href="mailto:shivangiihere@gmail.com"
               className="group inline-flex items-center gap-2 rounded-full bg-accent-deep px-7 py-3.5 text-sm font-medium text-white transition-transform hover:scale-[1.02]"
             >
-              panditashivangi2000@gmail.com
+              shivangiihere@gmail.com
               <ArrowUpRight
                 size={15}
                 className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

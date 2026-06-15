@@ -143,7 +143,7 @@ export default async function CaseStudyPage({
             </p>
             <Magnetic>
               <a
-                href="mailto:panditashivangi2000@gmail.com"
+                href="mailto:shivangiihere@gmail.com"
                 className="group mt-7 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
               >
                 Get in touch
