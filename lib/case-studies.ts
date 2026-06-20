@@ -11,6 +11,85 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "job-finder",
+    tag: "AI Product · 0→1",
+    title: "Job Finder",
+    subtitle:
+      "AI job-search agent · 2026 · job-finder-agent",
+    blurb:
+      "Designed and shipped an AI agent that scrapes fresh PM roles daily, scores fit with an LLM, auto-tailors resumes and cover letters, and emails a ranked digest — turning a fragmented, hours-long job hunt into a single morning glance.",
+    metrics: [
+      { value: "Daily", label: "Automated pipeline" },
+      { value: "7+", label: "Job sources" },
+      { value: "Multi", label: "Tenant SaaS" },
+      { value: "0→1", label: "Solo PM + build" },
+    ],
+    skills: [
+      "AI Product",
+      "Workflow Automation",
+      "Cost / Constraint Design",
+      "User Research",
+      "Roadmapping",
+      "GTM Strategy",
+    ],
+    content: `
+      <h2>Executive Summary</h2>
+      <p>Job Finder is an AI-powered job-search agent built for one painfully familiar problem — applying to roles is a slow, repetitive, emotionally draining grind. It scrapes fresh Product Manager openings across multiple boards every day, scores each one for fit using an LLM, automatically tailors a resume and cover letter to the strongest matches, and emails a ranked daily digest. What used to take hours of manual searching and rewriting becomes a single glance over morning coffee.</p>
+      <blockquote><strong>The core insight:</strong> the hardest part of job-hunting isn't a lack of listings — it's the cognitive load of filtering noise, judging fit, and re-tailoring materials for every single role. Automate the grind, and the candidate gets to spend their energy on the conversations that actually matter.</blockquote>
+
+      <h2>The Problem Space</h2>
+      <h3>Three pain points from my own job search</h3>
+      <ul>
+        <li><strong>Fragmented search:</strong> relevant roles are scattered across a dozen boards, each with its own filters and noise. Checking them all daily is exhausting and easy to abandon.</li>
+        <li><strong>Fit is hard to judge fast:</strong> a listing's title rarely tells you whether you'd actually be a strong candidate — visa eligibility, seniority, and domain all hide in the fine print.</li>
+        <li><strong>Tailoring doesn't scale:</strong> everyone says "customize your resume for each role," but doing that by hand for 20 applications a week is simply not sustainable.</li>
+      </ul>
+
+      <h2>Target User</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Attribute</th><th>The Active Job-Seeker</th></tr>
+        <tr><td><strong>Who</strong></td><td>Early-to-mid career professional running a focused, ongoing job search (starting with PM roles)</td></tr>
+        <tr><td><strong>Core need</strong></td><td>A curated, fit-scored shortlist every day — without manually trawling boards</td></tr>
+        <tr><td><strong>Frustration</strong></td><td>"I waste an hour a day searching and re-tailoring, and still miss good roles"</td></tr>
+        <tr><td><strong>Success metric</strong></td><td>More quality applications submitted with far less effort per application</td></tr>
+      </table></div>
+
+      <h2>The Solution — An End-to-End Pipeline</h2>
+      <p><span class="phase phase-1">1 — Discover</span><br/>Daily scrapers pull fresh roles from free, free-to-apply sources (The Muse, Jobicy, and others) that link straight to the employer's own application page — no paywalls, no dead ends.</p>
+      <p><span class="phase phase-2">2 — Score</span><br/>Each role is scored for fit by an LLM, batched for efficiency, with a fast regex pre-check for visa-sponsorship signals so expensive model calls are spent only where they add value.</p>
+      <p><span class="phase phase-3">3 — Tailor &amp; Deliver</span><br/>For the strongest matches, the agent auto-generates a tailored resume and cover letter, then emails a ranked digest straight to the user's inbox.</p>
+
+      <h2>Prioritization &amp; Constraint Design</h2>
+      <p>The defining PM challenge here wasn't features — it was running a genuinely useful AI product without runaway cost. Every decision was a deliberate trade-off between coverage, quality, and spend:</p>
+      <div class="table-wrap"><table>
+        <tr><th>Decision</th><th>Rationale</th></tr>
+        <tr><td>Batch LLM scoring (~1 call per 8 jobs)</td><td>Cuts model spend dramatically while keeping fit-scoring quality high</td></tr>
+        <tr><td>Regex sponsorship pre-filter</td><td>Removes obviously ineligible roles with zero LLM cost</td></tr>
+        <tr><td>Hard per-run, per-user, per-day call caps</td><td>Guarantees the product can never blow its budget</td></tr>
+        <tr><td>Time-boxed scrapers &amp; tailoring budget</td><td>Keeps the daily run fast and predictable</td></tr>
+        <tr><td>Free, free-to-apply sources only</td><td>Respects the user's intent — no surfacing roles behind paywalls</td></tr>
+      </table></div>
+
+      <h2>From Tool to Product</h2>
+      <p>What started as a personal script became a real multi-tenant SaaS. I designed an approval-gated onboarding flow — sign up, confirm email, wait for admin approval — with role-based access and per-user data isolation, so each person gets their own private pipeline, preferences, and digest. That shift from "a thing I built for myself" to "a product other people can safely use" was the most important product decision of the project.</p>
+
+      <h2>Measuring Impact</h2>
+      <ul>
+        <li><strong>Effort:</strong> collapses a daily multi-board search + manual tailoring routine into one ranked email</li>
+        <li><strong>Coverage:</strong> aggregates 7+ sources the user would otherwise check by hand</li>
+        <li><strong>Quality:</strong> every surfaced role is fit-scored and links to a real, free-to-apply posting</li>
+        <li><strong>Sustainability:</strong> cost caps and batching keep the running cost low enough to operate continuously</li>
+      </ul>
+
+      <h2>Lessons Learned</h2>
+      <ul>
+        <li><strong>Constraints are the product.</strong> For an AI product, cost discipline isn't a footnote — it's a core feature. The batching and caps are what make it shippable, not just a demo.</li>
+        <li><strong>Respect the user's intent.</strong> Dropping sources that felt paywalled mattered more than maximizing raw listing count. Trust beats volume.</li>
+        <li><strong>Build for one, design for many.</strong> Solving my own problem first kept the scope honest; adding multi-tenancy turned it into something others can actually use.</li>
+      </ul>
+    `,
+  },
+  {
     slug: "focus-tribe",
     tag: "0→1 Product",
     title: "Focus Tribe",
