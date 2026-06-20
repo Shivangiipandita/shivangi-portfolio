@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { CountUp, Magnetic, Marquee } from "./motion";
+import { caseStudies } from "@/lib/case-studies";
 import type { ReactNode } from "react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -28,7 +29,7 @@ const stats = [
   { to: 3.5, decimals: 1, suffix: "+", label: "Years in product & BA" },
   { to: 15, suffix: "+", label: "Government projects" },
   { to: 500, suffix: "K+", label: "Residents impacted" },
-  { to: 4, suffix: "", label: "Deep-dive case studies" },
+  { to: caseStudies.length, suffix: "", label: "Deep-dive case studies" },
 ];
 
 const ticker = [

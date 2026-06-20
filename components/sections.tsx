@@ -5,6 +5,24 @@ import { caseStudies } from "@/lib/case-studies";
 
 const WRAP = "mx-auto max-w-6xl px-6 sm:px-8";
 
+const NUMBER_WORDS = [
+  "Zero",
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+];
+
+function numberWord(n: number) {
+  return NUMBER_WORDS[n] ?? n.toString();
+}
+
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <p className="flex items-center gap-3 text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-ink-faint">
@@ -79,7 +97,7 @@ export function Work() {
           <div>
             <Eyebrow>Selected Work</Eyebrow>
             <h2 className="mt-5 max-w-2xl font-display text-4xl font-light leading-[1.02] tracking-tight text-ink sm:text-5xl">
-              Four problems, worked end to end.
+              {numberWord(caseStudies.length)} problems, worked end to end.
             </h2>
             <p className="mt-5 max-w-lg text-ink-dim">
               Each follows the same discipline — understand the user,
