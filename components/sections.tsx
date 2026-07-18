@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Diamond } from "lucide-react";
 import { Reveal, Stagger, StaggerItem, Magnetic } from "./motion";
+import { ToolIcon, hasToolIcon } from "./tool-icons";
 import { caseStudies } from "@/lib/case-studies";
 
 const WRAP = "mx-auto max-w-6xl px-6 sm:px-8";
@@ -150,9 +151,10 @@ export function Work() {
                   </div>
                 </div>
 
-                <span className="hidden items-center gap-2 self-center text-sm font-medium text-ink-faint transition-colors group-hover:text-ink sm:flex">
+                <span className="mt-1 inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-accent-deep transition-colors group-hover:text-accent sm:mt-0 sm:self-center">
+                  Read case study
                   <ArrowRight
-                    size={20}
+                    size={16}
                     className="transition-transform duration-300 group-hover:translate-x-1.5"
                   />
                 </span>
@@ -171,12 +173,22 @@ const skillGroups = [
   {
     title: "Product",
     items:
-      "Product Strategy · Roadmapping · User Research · Competitive Analysis · RICE / MoSCoW · Jobs-to-be-Done · Product Discovery · GTM Strategy · Feature Prioritization · Wireframing · Agile / Scrum · Stakeholder Management",
+      "Product Strategy · Roadmapping · Product Discovery · User Research · Competitive Analysis · Prioritization (RICE / MoSCoW) · Jobs-to-be-Done · GTM Strategy · AI Product Metrics · Responsible AI · Human-in-the-Loop Design",
+  },
+  {
+    title: "Business Analysis",
+    items:
+      "Requirements Gathering · Process Improvement · Stakeholder Management · UAT Testing · BRD / FRD / PRD · User Stories · Test Cases · Wireframing · Agile / Scrum · Sprint Planning",
   },
   {
     title: "Tools",
     items:
       "Figma · Jira · Notion · Miro · Salesforce · Tableau · Postman · Lucidchart · Confluence · Trello",
+  },
+  {
+    title: "Technical",
+    items:
+      "Salesforce Service Cloud · Custom Objects · SOQL · SQL · Data Modeling · API Testing",
   },
 ];
 
@@ -212,8 +224,11 @@ export function Skills() {
                 {g.items.split(" · ").map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-edge-strong bg-card px-4 py-2 text-sm text-ink-dim transition-colors hover:border-accent hover:text-ink"
+                    className="inline-flex items-center gap-2 rounded-full border border-edge-strong bg-card px-4 py-2 text-sm text-ink-dim transition-colors hover:border-accent hover:text-ink"
                   >
+                    {hasToolIcon(item) && (
+                      <ToolIcon name={item} className="h-4 w-4 shrink-0" />
+                    )}
                     {item}
                   </span>
                 ))}
@@ -250,16 +265,33 @@ export function Skills() {
 
 /* ───────────────── Experience ───────────────── */
 
-const roles = [
+const roles: {
+  period: string;
+  title: string;
+  org: string;
+  href?: string;
+  bullets: string[];
+}[] = [
   {
-    period: "Jan 2026 — Present",
+    period: "2026 — Present",
     title: "Founder & Product Lead",
     org: "Focus Tribe",
     href: "http://focustribe.in",
     bullets: [
-      "Founded a web-based productivity platform helping users build habits through collaborative “tribes”",
-      "Validated the core problem through 20+ user interviews; identified the accountability gap as the primary churn driver in habit apps",
-      "Led all product decisions — prioritization, user flows, and roadmap across 3 delivery phases; shipped 14 features",
+      "Conceptualised and co-founded a web-based productivity platform that helps users build habits and stay accountable through collaborative “tribes”",
+      "Validated the core accountability gap via 20+ user interviews — defining personas and prioritising features (streaks, focus timers, group accountability) with the Jobs-to-be-Done framework",
+      "Owned every product decision — roadmap, user flows, and the onboarding-to-retention journey — acquiring 10+ beta users through iterative feedback loops",
+    ],
+  },
+  {
+    period: "2026 — Present",
+    title: "Founder & Product Lead",
+    org: "Job Finder Agent",
+    href: "https://job-finder-agent-mauve.vercel.app",
+    bullets: [
+      "Owned 0-to-1 strategy, roadmap, and delivery of a live, multi-tenant AI platform (Next.js, Supabase, Gemini) that automates the job search end to end — LLM fit-scoring, auto-tailored resumes and cover letters, and application tracking",
+      "Built an agentic daily pipeline that aggregates postings across job boards and ranks roles by user-fit — cutting per-application effort ~90%",
+      "Applied Responsible AI and Human-in-the-Loop design (batched scoring, rule-based filters, cost guardrails, admin approval) on a role-based architecture with row-level security",
     ],
   },
   {
@@ -267,9 +299,10 @@ const roles = [
     title: "Business Analyst",
     org: "Unique Comp, Inc.",
     bullets: [
-      "Delivered Salesforce solutions across 15+ NYC government projects impacting 500K+ residents — case processing time down 40%",
-      "Led discovery through 200+ stakeholder interviews; converted ambiguous policy requirements into prioritized backlogs, cutting requirement-to-delivery cycle by 30%",
-      "Ran client demos and feedback loops that reduced UAT defects by 25%; owned backlog and sprint execution in Jira",
+      "Delivered end-to-end solutions across 15+ NYC government projects (Rockland County case management, Barnstable County loan systems) impacting 500K+ residents — case processing time down 40%",
+      "Led discovery for high-stakes programs through 200+ stakeholder interviews; converted ambiguous policy requirements into prioritised backlogs, cutting requirement-to-delivery cycle by 30%",
+      "Ran client demos and POCs that reduced UAT defects by 25% and increased stakeholder approval velocity",
+      "Owned backlog and sprint execution; built Tableau dashboards for data-driven insights and partnered with developers, QA, and clients to ship on time",
     ],
   },
 ];
@@ -361,8 +394,8 @@ export function Contact() {
       <Reveal>
         <Eyebrow>Contact</Eyebrow>
         <h2 className="mt-6 max-w-3xl font-display text-[clamp(2.4rem,1.4rem+4vw,4.5rem)] font-light leading-[1.02] tracking-tight text-ink">
-          Looking for a PM who starts with the user?{" "}
-          <em className="italic text-accent">Let&apos;s talk.</em>
+          Great products start with the user.{" "}
+          <em className="italic text-accent">Let&apos;s build yours.</em>
         </h2>
         <p className="mt-7 max-w-md text-lg text-ink-dim">
           Actively looking for Product Manager roles — Delhi NCR, Mumbai, Pune,

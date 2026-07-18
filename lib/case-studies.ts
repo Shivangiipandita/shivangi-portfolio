@@ -9,7 +9,7 @@ export type CaseStudy = {
   content: string; // trusted static HTML authored in this repo
 };
 
-export const caseStudies: CaseStudy[] = [
+const rawCaseStudies: CaseStudy[] = [
   {
     slug: "job-finder",
     tag: "AI Product · 0→1",
@@ -425,6 +425,19 @@ export const caseStudies: CaseStudy[] = [
     `,
   },
 ];
+
+// Display order for the homepage — Focus Tribe leads.
+const CASE_STUDY_ORDER = [
+  "focus-tribe",
+  "job-finder",
+  "public-loan-management",
+  "rapido-jammu",
+  "jira-core-ui",
+];
+
+export const caseStudies: CaseStudy[] = [...rawCaseStudies].sort(
+  (a, b) => CASE_STUDY_ORDER.indexOf(a.slug) - CASE_STUDY_ORDER.indexOf(b.slug),
+);
 
 export function getCaseStudy(slug: string) {
   return caseStudies.find((c) => c.slug === slug);
