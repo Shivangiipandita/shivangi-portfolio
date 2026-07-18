@@ -284,17 +284,6 @@ const roles: {
     ],
   },
   {
-    period: "2026 — Present",
-    title: "Founder & Product Lead",
-    org: "Job Finder Agent",
-    href: "https://job-finder-agent-mauve.vercel.app",
-    bullets: [
-      "Owned 0-to-1 strategy, roadmap, and delivery of a live, multi-tenant AI platform (Next.js, Supabase, Gemini) that automates the job search end to end — LLM fit-scoring, auto-tailored resumes and cover letters, and application tracking",
-      "Built an agentic daily pipeline that aggregates postings across job boards and ranks roles by user-fit — cutting per-application effort ~90%",
-      "Applied Responsible AI and Human-in-the-Loop design (batched scoring, rule-based filters, cost guardrails, admin approval) on a role-based architecture with row-level security",
-    ],
-  },
-  {
     period: "Jan 2023 — Present",
     title: "Business Analyst",
     org: "Unique Comp, Inc.",
