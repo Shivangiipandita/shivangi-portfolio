@@ -13,11 +13,11 @@
   --color-ink-dim: #5a5147;
   --color-ink-faint: #948a7c;
 
-  /* ─── single confident chroma: deep teal ─── */
-  --color-accent: #0f766e;
-  --color-accent-deep: #134e4a;
-  --color-accent-soft: #5eead4;
-  --color-accent-wash: #f0fdfa;
+  /* ─── single confident chroma: persimmon ─── */
+  --color-accent: #de4d26;
+  --color-accent-deep: #be3d1c;
+  --color-accent-soft: #f0a589;
+  --color-accent-wash: #f6e7df;
 
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
