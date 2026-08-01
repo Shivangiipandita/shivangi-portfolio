@@ -13,11 +13,11 @@
   --color-ink-dim: #5a5147;
   --color-ink-faint: #948a7c;
 
-  /* ─── single confident chroma: electric indigo ─── */
-  --color-accent: #4f46e5;
-  --color-accent-deep: #3730a3;
-  --color-accent-soft: #a5b4fc;
-  --color-accent-wash: #eef2ff;
+  /* ─── single confident chroma: deep teal ─── */
+  --color-accent: #0f766e;
+  --color-accent-deep: #134e4a;
+  --color-accent-soft: #5eead4;
+  --color-accent-wash: #f0fdfa;
 
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
