@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import { ScrollProgress } from "@/components/motion";
+import { ScrollProgress, CursorGlow } from "@/components/motion";
 
 const hanken = Hanken_Grotesk({
   variable: "--font-hanken",
@@ -45,6 +45,7 @@ export default function RootLayout({
     >
       <body className="relative min-h-full bg-paper text-ink">
         <ScrollProgress />
+        <CursorGlow />
         {children}
         <div className="grain" aria-hidden />
       </body>

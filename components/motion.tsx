@@ -11,6 +11,36 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
+/* ─────────── cursor spotlight glow ─────────── */
+export function CursorGlow() {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (reduce || !ref.current) return;
+    const el = ref.current;
+    const onMove = (e: MouseEvent) => {
+      el.style.setProperty("--cx", `${e.clientX}px`);
+      el.style.setProperty("--cy", `${e.clientY}px`);
+    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [reduce]);
+
+  if (reduce) return null;
+  return (
+    <div
+      ref={ref}
+      aria-hidden
+      className="pointer-events-none fixed inset-0 z-[25] transition-opacity duration-300"
+      style={{
+        background:
+          "radial-gradient(700px circle at var(--cx, -2000px) var(--cy, -2000px), rgba(79,70,229,0.055), transparent 70%)",
+      }}
+    />
+  );
+}
+
 /* ─────────── reveal on scroll ─────────── */
 export function Reveal({
   children,

@@ -53,7 +53,7 @@ export function Hero() {
         className="pointer-events-none absolute -top-40 right-[-10%] h-[600px] w-[600px] rounded-full opacity-60 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(222,77,38,0.16), transparent 65%)",
+            "radial-gradient(circle, rgba(79,70,229,0.13), transparent 65%)",
         }}
       />
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-36 sm:px-8 sm:pt-44">

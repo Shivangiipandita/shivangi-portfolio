@@ -115,7 +115,7 @@ export function Work() {
             <StaggerItem key={cs.slug}>
               <Link
                 href={`/work/${cs.slug}`}
-                className="group relative grid grid-cols-1 gap-5 border-b border-edge py-9 transition-colors duration-300 hover:bg-card sm:grid-cols-[3.5rem_1fr_auto] sm:items-start sm:gap-8 sm:px-4 sm:py-10"
+                className="group relative grid grid-cols-1 gap-5 border-b border-edge py-9 transition-all duration-300 hover:bg-card hover:shadow-[0_4px_24px_rgba(79,70,229,0.06)] sm:grid-cols-[3.5rem_1fr_auto] sm:items-start sm:gap-8 sm:px-4 sm:py-10 sm:rounded-lg"
               >
                 {/* accent bar */}
                 <span className="absolute left-0 top-0 hidden h-full w-[3px] origin-top scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100 sm:block" />
@@ -224,7 +224,7 @@ export function Skills() {
                 {g.items.split(" · ").map((item) => (
                   <span
                     key={item}
-                    className="inline-flex items-center gap-2 rounded-full border border-edge-strong bg-card px-4 py-2 text-sm text-ink-dim transition-colors hover:border-accent hover:text-ink"
+                    className="inline-flex items-center gap-2 rounded-full border border-edge-strong bg-card px-4 py-2 text-sm text-ink-dim transition-all duration-200 hover:border-accent hover:bg-accent-wash hover:text-ink"
                   >
                     {hasToolIcon(item) && (
                       <ToolIcon name={item} className="h-4 w-4 shrink-0" />
