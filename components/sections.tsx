@@ -279,8 +279,8 @@ const roles: {
     href: "http://focustribe.in",
     bullets: [
       "Conceptualised and co-founded a web-based productivity platform that helps users build habits and stay accountable through collaborative “tribes”",
-      "Validated the core accountability gap via 20+ user interviews — defining personas and prioritising features (streaks, focus timers, group accountability) with the Jobs-to-be-Done framework",
-      "Owned every product decision — roadmap, user flows, and the onboarding-to-retention journey — acquiring 10+ beta users through iterative feedback loops",
+      "Validated the core accountability gap via 40+ user interviews — defining personas and prioritising features (streaks, focus timers, group accountability) with the Jobs-to-be-Done framework",
+      "Owned every product decision — roadmap, user flows, and the onboarding-to-retention journey — acquiring 120+ beta users through iterative feedback loops",
     ],
   },
   {

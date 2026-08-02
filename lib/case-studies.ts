@@ -99,8 +99,8 @@ const rawCaseStudies: CaseStudy[] = [
     metrics: [
       { value: "14", label: "Features shipped" },
       { value: "3", label: "Phases" },
-      { value: "20+", label: "User interviews" },
-      { value: "10+", label: "Beta users" },
+      { value: "40+", label: "User interviews" },
+      { value: "120+", label: "Beta users" },
     ],
     skills: [
       "Product Strategy",
@@ -117,7 +117,7 @@ const rawCaseStudies: CaseStudy[] = [
       <blockquote><strong>The core insight:</strong> Solo productivity apps fail because there's no social consequence for ignoring tasks. By making work visible to people you care about, Focus Tribe turns productivity from a private struggle into a shared journey.</blockquote>
 
       <h2>The Problem Space</h2>
-      <h3>Three recurring pain points from 20+ user interviews</h3>
+      <h3>Three recurring pain points from 40+ user interviews</h3>
       <ul>
         <li><strong>App-Hopping Fatigue:</strong> Users juggled Todoist for tasks, Forest for focus, a journaling app for reflection, and group chats for accountability. Each context switch costs cognitive energy.</li>
         <li><strong>Solo Accountability Doesn't Work:</strong> No built-in mechanism for friends or teammates to see your progress, offer encouragement, or create gentle social pressure.</li>
