@@ -93,6 +93,81 @@ const rawCaseStudies: CaseStudy[] = [
     `,
   },
   {
+    slug: "runsheet",
+    tag: "AI SaaS · 0→1",
+    title: "Runsheet",
+    subtitle:
+      "YouTube scheduling & analytics platform · runsheet.buildifyapp.in",
+    blurb:
+      "Built a YouTube publishing and analytics SaaS that gives creators' weeks a shape — a four-week calendar for Shorts and long cuts, one-pass publishing that collapses a 15-click upload into a single action, and format analytics that report every finding with its sample size. AI-native, with an MCP server so Claude can manage the schedule.",
+    metrics: [
+      { value: "1-pass", label: "Video publishing" },
+      { value: "4-week", label: "Content calendar" },
+      { value: "5", label: "Channels per account" },
+      { value: "MCP", label: "AI-native (Claude)" },
+    ],
+    skills: [
+      "Product Strategy",
+      "SaaS Packaging",
+      "AI Product",
+      "Analytics & Metrics",
+      "Workflow Design",
+      "0→1 Building",
+    ],
+    liveUrl: "https://runsheet.buildifyapp.in/",
+    content: `
+      <h2>Executive Summary</h2>
+      <p>Runsheet is a YouTube scheduling and analytics platform that helps creators hold a consistent posting rhythm. It brings the whole week into one view — Shorts and long-form together — publishes a video and all its metadata in a single pass, and measures which formats actually work, with the sample size shown next to every finding.</p>
+      <blockquote><strong>The positioning:</strong> "Studio tells you what happened. Runsheet tells you what to do next Tuesday." The product is deliberately forward-looking — it turns raw analytics into the next decision, not just another dashboard.</blockquote>
+
+      <h2>The Problem Space</h2>
+      <h3>Three pain points creators face</h3>
+      <ul>
+        <li><strong>The rhythm breaks.</strong> Creators film in bursts, so posting cadence is inconsistent — the week has no shape.</li>
+        <li><strong>Every upload is fifteen clicks.</strong> Title, description, tags, thumbnail, playlist, visibility, scheduling — the same repetitive workflow, video after video.</li>
+        <li><strong>You can't tell what's working.</strong> Comparing Shorts vs long-form performance is guesswork without a way to weigh results against how much data backs them.</li>
+      </ul>
+
+      <h2>Target User</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Attribute</th><th>The Consistent Creator</th></tr>
+        <tr><td><strong>Who</strong></td><td>YouTube creators publishing both Shorts and long-form, managing 1–5 channels</td></tr>
+        <tr><td><strong>Core need</strong></td><td>A repeatable weekly cadence without the manual upload grind</td></tr>
+        <tr><td><strong>Frustration</strong></td><td>"I film in bursts, re-enter the same metadata every time, and still can't tell which format is paying off"</td></tr>
+        <tr><td><strong>Success metric</strong></td><td>Consistent publishing with less time per upload and clearer decisions on what to make next</td></tr>
+      </table></div>
+
+      <h2>The Solution</h2>
+      <p><span class="phase phase-1">Give the week a shape</span><br/>A four-week calendar shows Shorts and long cuts together, so the posting cadence is something you can see and plan against — the channel's running order.</p>
+      <p><span class="phase phase-2">One-pass publishing</span><br/>Title, description, tags, thumbnail, playlist, visibility, and scheduling are all handled in a single action — collapsing a fifteen-click routine into one.</p>
+      <p><span class="phase phase-3">Analytics with sample sizes</span><br/>Format performance is compared with statistical tests, and every finding is shown with the sample size behind it — so creators trust the signal instead of chasing noise.</p>
+
+      <h2>AI-Native by Design</h2>
+      <p>Runsheet ships an <strong>MCP server</strong>, letting Claude and other AI clients manage the schedule and draft copy directly. Rather than bolting a chatbot onto a dashboard, the product exposes its core actions to AI agents — so planning the week and writing metadata can happen in the tools creators already talk to.</p>
+
+      <h2>Beyond the Core</h2>
+      <ul>
+        <li><strong>Multi-channel management:</strong> analytics kept separate per channel, up to five.</li>
+        <li><strong>Watchlist tracking:</strong> monitor competitor channels to benchmark against the field.</li>
+        <li><strong>Free tools:</strong> a thumbnail maker, character counter, title generator, and cadence planner — top-of-funnel utilities that bring creators in before they subscribe.</li>
+      </ul>
+
+      <h2>Packaging &amp; Pricing</h2>
+      <p>Pricing is tiered around the two dimensions creators actually scale on — number of channels and how far ahead they can queue:</p>
+      <div class="table-wrap"><table>
+        <tr><th>Plan</th><th>Price</th><th>Channels</th><th>Queued videos</th><th>History</th></tr>
+        <tr><td>Free</td><td>$0</td><td>1</td><td>3</td><td>7 days</td></tr>
+        <tr><td>Starter</td><td>$12/mo</td><td>1</td><td>15</td><td>60 days</td></tr>
+        <tr><td>Creator</td><td>$29/mo</td><td>2</td><td>60 / channel</td><td>Full</td></tr>
+        <tr><td>Network</td><td>$69/mo</td><td>5</td><td>250 / channel</td><td>Full</td></tr>
+      </table></div>
+      <p>The free tier is a genuine on-ramp (1 channel, a short queue, and a week of history), with paid tiers unlocking more channels, deeper queues, and full analytics history — a classic land-and-expand structure.</p>
+
+      <h2>The Takeaway</h2>
+      <p>Runsheet reframes creator analytics from backward-looking reporting to forward-looking action. By giving the week a shape, removing the upload grind, and grounding every insight in its sample size — then making all of it accessible to AI agents — it helps creators stay consistent and decide what to make next with confidence.</p>
+    `,
+  },
+  {
     slug: "pw-teardown",
     tag: "Product Teardown",
     title: "Physics Wallah Teardown",
@@ -550,6 +625,7 @@ const rawCaseStudies: CaseStudy[] = [
 const CASE_STUDY_ORDER = [
   "focus-tribe",
   "job-finder",
+  "runsheet",
   "public-loan-management",
   "rapido-jammu",
   "jira-core-ui",
