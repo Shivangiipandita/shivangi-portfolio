@@ -96,17 +96,37 @@ export default async function CaseStudyPage({
               ))}
             </div>
 
-            {cs.deckUrl && (
-              <Magnetic>
-                <a
-                  href={cs.deckUrl}
-                  download
-                  className="deck-download group mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
-                >
-                  Download the teardown deck
-                  <Download size={15} className="deck-download-icon" />
-                </a>
-              </Magnetic>
+            {(cs.liveUrl || cs.deckUrl) && (
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                {cs.liveUrl && (
+                  <Magnetic>
+                    <a
+                      href={cs.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                    >
+                      Live demo
+                      <ArrowUpRight
+                        size={15}
+                        className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
+                    </a>
+                  </Magnetic>
+                )}
+                {cs.deckUrl && (
+                  <Magnetic>
+                    <a
+                      href={cs.deckUrl}
+                      download
+                      className="deck-download group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                    >
+                      Download the teardown deck
+                      <Download size={15} className="deck-download-icon" />
+                    </a>
+                  </Magnetic>
+                )}
+              </div>
             )}
           </Reveal>
         </div>

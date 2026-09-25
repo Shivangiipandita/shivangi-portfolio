@@ -8,6 +8,7 @@ export type CaseStudy = {
   skills: string[];
   content: string; // trusted static HTML authored in this repo
   deckUrl?: string; // optional downloadable deck (served from /public)
+  liveUrl?: string; // optional live/deployed product link
 };
 
 const rawCaseStudies: CaseStudy[] = [
@@ -33,6 +34,7 @@ const rawCaseStudies: CaseStudy[] = [
       "Roadmapping",
       "GTM Strategy",
     ],
+    liveUrl: "https://job-finder-agent-mauve.vercel.app",
     content: `
       <h2>Executive Summary</h2>
       <p>Job Finder is an AI-powered job-search agent built for one painfully familiar problem — applying to roles is a slow, repetitive, emotionally draining grind. It scrapes fresh Product Manager openings across multiple boards every day, scores each one for fit using an LLM, automatically tailors a resume and cover letter to the strongest matches, and emails a ranked daily digest. What used to take hours of manual searching and rewriting becomes a single glance over morning coffee.</p>
@@ -227,6 +229,7 @@ const rawCaseStudies: CaseStudy[] = [
       "Competitive Analysis",
       "Feature Prioritization",
     ],
+    liveUrl: "https://focustribe.in",
     content: `
       <h2>Executive Summary</h2>
       <p>Focus Tribe is a collaborative productivity platform that combines real-time task management, Pomodoro focus sessions, and structured self-reflection — all visible to your accountability circle.</p>
