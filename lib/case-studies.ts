@@ -98,8 +98,8 @@ const rawCaseStudies: CaseStudy[] = [
     blurb:
       "A full product teardown of Physics Wallah — India's fastest-growing EdTech app. Diagnosed why new users drop off in the first session, benchmarked PW against Unacademy and Testbook, and prioritised four fixes with RICE and MoSCoW, anchored to a North Star metric and OKRs.",
     metrics: [
-      { value: "10M+", label: "App downloads analysed" },
-      { value: "$7.5B", label: "EdTech market sized" },
+      { value: "3", label: "Apps compared" },
+      { value: "4", label: "Pain points diagnosed" },
       { value: "4", label: "Solutions RICE-scored" },
       { value: "3", label: "Personas mapped" },
     ],

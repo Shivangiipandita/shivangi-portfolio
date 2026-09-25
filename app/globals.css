@@ -99,6 +99,23 @@
   );
 }
 
+/* ─── download-deck button: bobbing arrow ─── */
+@keyframes download-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+.deck-download-icon {
+  animation: download-bob 1.6s ease-in-out infinite;
+}
+.deck-download:hover .deck-download-icon {
+  animation-duration: 0.7s;
+}
+
 /* ─── hand-drawn accent underline ─── */
 .ink-underline {
   background-image: linear-gradient(
@@ -116,6 +133,9 @@
     scroll-behavior: auto;
   }
   .animate-marquee {
+    animation: none;
+  }
+  .deck-download-icon {
     animation: none;
   }
 }

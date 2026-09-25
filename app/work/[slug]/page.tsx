@@ -101,13 +101,10 @@ export default async function CaseStudyPage({
                 <a
                   href={cs.deckUrl}
                   download
-                  className="group mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                  className="deck-download group mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
                 >
-                  Download the deck
-                  <Download
-                    size={15}
-                    className="transition-transform group-hover:translate-y-0.5"
-                  />
+                  Download the teardown deck
+                  <Download size={15} className="deck-download-icon" />
                 </a>
               </Magnetic>
             )}
