@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Download } from "lucide-react";
 import type { Metadata } from "next";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
 import { Nav } from "@/components/nav";
@@ -95,6 +95,22 @@ export default async function CaseStudyPage({
                 </span>
               ))}
             </div>
+
+            {cs.deckUrl && (
+              <Magnetic>
+                <a
+                  href={cs.deckUrl}
+                  download
+                  className="group mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                >
+                  Download the deck
+                  <Download
+                    size={15}
+                    className="transition-transform group-hover:translate-y-0.5"
+                  />
+                </a>
+              </Magnetic>
+            )}
           </Reveal>
         </div>
       </header>

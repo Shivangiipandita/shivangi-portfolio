@@ -7,6 +7,7 @@ export type CaseStudy = {
   metrics: { value: string; label: string }[];
   skills: string[];
   content: string; // trusted static HTML authored in this repo
+  deckUrl?: string; // optional downloadable deck (served from /public)
 };
 
 const rawCaseStudies: CaseStudy[] = [
@@ -87,6 +88,122 @@ const rawCaseStudies: CaseStudy[] = [
         <li><strong>Respect the user's intent.</strong> Dropping sources that felt paywalled mattered more than maximizing raw listing count. Trust beats volume.</li>
         <li><strong>Build for one, design for many.</strong> Solving my own problem first kept the scope honest; adding multi-tenancy turned it into something others can actually use.</li>
       </ul>
+    `,
+  },
+  {
+    slug: "pw-teardown",
+    tag: "Product Teardown",
+    title: "Physics Wallah Teardown",
+    subtitle: "How PW can own the EdTech AI race by fixing what users actually hate · 2026",
+    blurb:
+      "A full product teardown of Physics Wallah — India's fastest-growing EdTech app. Diagnosed why new users drop off in the first session, benchmarked PW against Unacademy and Testbook, and prioritised four fixes with RICE and MoSCoW, anchored to a North Star metric and OKRs.",
+    metrics: [
+      { value: "10M+", label: "App downloads analysed" },
+      { value: "$7.5B", label: "EdTech market sized" },
+      { value: "4", label: "Solutions RICE-scored" },
+      { value: "3", label: "Personas mapped" },
+    ],
+    skills: [
+      "Product Teardown",
+      "Competitive Analysis",
+      "User Personas",
+      "RICE / MoSCoW",
+      "North Star & OKRs",
+      "Retention Strategy",
+    ],
+    deckUrl: "/PW-Product-Teardown-Shivangi-Pandita.pptx",
+    content: `
+      <h2>Executive Summary</h2>
+      <p>Physics Wallah has 10M+ downloads and is the fastest-growing EdTech platform in India — yet new users drop off within the first session. This teardown diagnoses why, benchmarks PW against its two closest rivals, and proposes a prioritised set of fixes to repair first-session retention before a user ever hits a paywall.</p>
+      <blockquote><strong>The thesis:</strong> PW has the reach, the affordability, and — uniquely — a working AI assistant. The only thing missing is using what it already knows about the user. Fix onboarding, reduce overwhelm, and make the AI context-aware, and PW wins the EdTech AI race.</blockquote>
+
+      <h2>Problem Statement</h2>
+      <ul>
+        <li><strong>Value after the paywall:</strong> PW lands users directly on paid batch pages before they experience any product value, causing early abandonment.</li>
+        <li><strong>A blind differentiator:</strong> PW's AI assistant is a genuine edge over competitors — but it answers without using the user's study context, delivering irrelevant responses.</li>
+        <li><strong>Onboarding gaps:</strong> basic profile features (like gender selection) are missing, and the home screen is too overwhelming for a first-time user to navigate.</li>
+      </ul>
+      <p><strong>Goal:</strong> fix D1 retention by improving onboarding, reducing overwhelm, and making the AI assistant context-aware — so users see value before they see a paywall.</p>
+
+      <h2>The Arena — India's EdTech Market</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Signal</th><th>Value</th><th>Why it matters</th></tr>
+        <tr><td>Total EdTech market (2025)</td><td><strong>$7.5B</strong></td><td>Large, fast-growing prize</td></tr>
+        <tr><td>Students in India (K-12 + Higher Ed)</td><td><strong>450M+</strong></td><td>Enormous addressable base</td></tr>
+        <tr><td>EdTech users from Tier 2 &amp; 3 cities</td><td><strong>60%</strong></td><td>PW's core, budget-sensitive user</td></tr>
+        <tr><td>Growth in online exam prep (2022–25)</td><td><strong>2.8x</strong></td><td>Demand is accelerating</td></tr>
+      </table></div>
+      <blockquote><strong>Key insight:</strong> PW's core user — an affordable exam aspirant from Tier 2/3 India — is mobile-first, budget-sensitive, and overwhelmed by choice. They don't need more content. They need structure, guidance, and confidence. PW has the reach; the gap is in the experience.</blockquote>
+
+      <h2>User Personas</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Persona</th><th>Who</th><th>Frustration</th><th>What they want</th></tr>
+        <tr><td><strong>Jatin</strong></td><td>17, Delhi (Tier 1) · JEE Main + Advanced</td><td>Studying for boards AND JEE — time is his scarcest resource</td><td>"I have 4 hours a day. I can't waste even 10 mins figuring out where to start."</td></tr>
+        <tr><td><strong>Surbhi</strong></td><td>20, Pune (Tier 2) · NEET (2nd attempt)</td><td>Failed once; obsessively compares resources but can't commit</td><td>"I've tried 3 apps. They all feel the same. I just want someone to guide me."</td></tr>
+        <tr><td><strong>Ria</strong></td><td>25, Ahmedabad (Tier 2) · UPSC</td><td>Working full-time; too many resources, no structure</td><td>"I have 2 hours every morning. Tell me exactly what to do in those 2 hours."</td></tr>
+      </table></div>
+
+      <h2>User Pain Points</h2>
+      <ul>
+        <li><strong>Wrong first screen:</strong> after login, users land directly on paid batches before seeing any value — aggressive monetization before trust is built. Hits Jatin &amp; Ria hardest; they open the app to study, not to buy.</li>
+        <li><strong>Overwhelming home screen:</strong> too many tabs, sections, and banners on one screen with no guided path. Hits everyone, especially an already-confused Surbhi.</li>
+        <li><strong>Context-blind AI assistant:</strong> a user personalizes for UPSC, asks a NEET question, and the AI answers without acknowledging the mismatch. No context-switch flow exists. Hits Surbhi and Ria, who rely on the AI for guidance.</li>
+        <li><strong>No profile customization:</strong> the default profile icon is male with no option to change gender or edit preferences after onboarding — a representation gap that directly hits female users, who are 50%+ of PW's NEET base.</li>
+      </ul>
+
+      <h2>Competitive Analysis — PW vs Unacademy vs Testbook</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Feature</th><th>Physics Wallah</th><th>Unacademy</th><th>Testbook</th></tr>
+        <tr><td>First screen</td><td>Paid batches (no choice)</td><td>Choice: Explore or Buy</td><td>Offer page + trial CTA</td></tr>
+        <tr><td>User control</td><td>Partial — can navigate away</td><td>Yes — upfront choice</td><td>Partial — back to home</td></tr>
+        <tr><td>Home screen</td><td>Very overwhelming</td><td>Less cluttered, crisp tabs</td><td>Fewer tabs, confusing names</td></tr>
+        <tr><td>AI assistant</td><td>✓ Exists, good intro</td><td>✗ Not available</td><td>✓ Exists, broken UI</td></tr>
+        <tr><td>Context-aware AI</td><td>✗ Answers out of context</td><td>N/A</td><td>✗ Same problem as PW</td></tr>
+        <tr><td>Trial option</td><td>✗ Not available</td><td>✗ Not available</td><td>✓ 1–2 day trial</td></tr>
+        <tr><td>Profile edit</td><td>✗ Wrong gender icon / no edit</td><td>Default user icon</td><td>Icon by first letter</td></tr>
+      </table></div>
+
+      <h3>Key competitive insights</h3>
+      <ul>
+        <li><strong>PW's AI is a real differentiator.</strong> Neither rival has a properly working AI assistant — PW has one and introduces it well. This is its biggest current advantage.</li>
+        <li><strong>Nobody has solved context-aware AI.</strong> All three answer out-of-context questions without checking intent. Whoever fixes this first wins the AI PM race in EdTech India.</li>
+        <li><strong>Unacademy wins on information architecture.</strong> Giving users a first-screen choice (Explore vs Buy) feels more respectful of intent than dumping them into paid batches.</li>
+        <li><strong>Testbook wins on trial strategy.</strong> A 1–2 day free trial is smart, low-friction conversion — neither PW nor Unacademy offers it.</li>
+      </ul>
+
+      <h2>Solutions</h2>
+      <p><span class="phase phase-1">S1 — Context-Aware Study Switch</span><br/>When a user asks about a different exam, the AI first confirms intent, offers to switch context, asks why, answers, then offers to return to the original session. <em>Lifts AI session depth, answer relevance, and D7 retention.</em></p>
+      <p><span class="phase phase-2">S2 — Guided First Screen</span><br/>Show a choice screen after login — "Continue studying" vs "Explore courses" — mirroring Unacademy but with PW's stronger personalization. <em>Cuts D1 drop-off; improves paid-conversion quality.</em></p>
+      <p><span class="phase phase-3">S3 — Simplified Home Architecture</span><br/>Reduce primary tabs to three — Study, Tests, Ask AI — move secondary content behind "More", and give every user a "Today's Plan" card up top. <em>Reduces time-to-first-action; deepens sessions.</em></p>
+      <p><span class="phase phase-1">S4 — Free Trial Option</span><br/>Offer a 2-day full-access trial for first-time users, gated behind a phone number, with a clear countdown and a day-2 conversion nudge. <em>Lifts paid conversion and acquisition quality.</em></p>
+
+      <h2>Prioritization — RICE Framework</h2>
+      <div class="table-wrap"><table>
+        <tr><th>Solution</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE</th><th>Priority</th></tr>
+        <tr><td>Context-Aware AI (S1)</td><td>8</td><td>5</td><td>85%</td><td>3</td><td><strong>11.3</strong></td><td>#1</td></tr>
+        <tr><td>Guided First Screen (S2)</td><td>8</td><td>4</td><td>70%</td><td>2</td><td><strong>11.2</strong></td><td>#2</td></tr>
+        <tr><td>Simplified Home (S3)</td><td>9</td><td>4</td><td>75%</td><td>3</td><td><strong>9.0</strong></td><td>#3</td></tr>
+        <tr><td>Free Trial (S4)</td><td>7</td><td>3</td><td>70%</td><td>2</td><td><strong>7.35</strong></td><td>#4</td></tr>
+      </table></div>
+      <p><strong>MoSCoW:</strong> <strong>Must</strong> — Context-Aware AI (S1); <strong>Should</strong> — Guided First Screen (S2); <strong>Could</strong> — Simplified Home (S3); <strong>Won't (now)</strong> — Free Trial (S4), which needs business-model alignment first.</p>
+
+      <h2>North Star Metric &amp; OKRs</h2>
+      <blockquote><strong>North Star:</strong> Daily Active Learners completing at least one full study session.</blockquote>
+      <p><strong>O1 — Improve first-session retention</strong></p>
+      <ul>
+        <li>KR1.1 — Increase D1 retention by +15 points within 90 days</li>
+        <li>KR1.2 — Reduce time-to-first-study-action to under 2 minutes</li>
+        <li>KR1.3 — Increase % of new users who reach the "Explore" tab in their first session by 40%</li>
+      </ul>
+      <p><strong>O2 — Make the AI assistant the #1 reason users stay</strong></p>
+      <ul>
+        <li>KR2.1 — Increase average AI session depth (messages per session) by 60%</li>
+        <li>KR2.2 — Achieve 80%+ answer-relevance rate (thumbs-up signal) for AI responses</li>
+        <li>KR2.3 — Users who engage with AI retain at 2x the rate of non-AI users (D30)</li>
+      </ul>
+
+      <h2>The Takeaway</h2>
+      <p>Physics Wallah has the reach, the affordability, and now the AI. The only thing missing is using what it already knows about the user — turning a content library into a guided, context-aware learning experience that earns trust before it asks for money.</p>
     `,
   },
   {
@@ -433,6 +550,7 @@ const CASE_STUDY_ORDER = [
   "public-loan-management",
   "rapido-jammu",
   "jira-core-ui",
+  "pw-teardown",
 ];
 
 export const caseStudies: CaseStudy[] = [...rawCaseStudies].sort(
